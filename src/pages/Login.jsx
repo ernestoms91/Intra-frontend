@@ -12,9 +12,9 @@ const Login = () => {
   const { checking, uid, rol } = useSelector(state => state.auth)
 
 
-//     if ( checking ) {
-//     return <div>Espere....</div>
-// }
+//      if ( checking ) {
+//      return <div>Espere....</div>
+//  }
 
   console.log(typeof(rol));
   

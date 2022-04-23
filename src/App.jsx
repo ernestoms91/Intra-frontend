@@ -1,5 +1,5 @@
 
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import RequireAuth from './components/RequireAuth';
 import { useDispatch, useSelector } from 'react-redux';
 import Administrador from './pages/Administrador';
@@ -10,6 +10,9 @@ import { useEffect } from 'react';
 import { startChecking } from './actions/auth';
 import Layout from './components/ui/Layout';
 import NuevoUsuario from './components/administrador/NuevoUsuario';
+import AdministrarUsuarios from './components/administrador/AdministrarUsuarios';
+import VerUsuario from './components/administrador/VerUsuario';
+import EditarUsuario from './components/administrador/EditarUsuario';
 
 
 
@@ -36,9 +39,11 @@ function App() {
       <Route path="/" element={<Layout />}> 
 
       <Route element={<RequireAuth allowedRoles={[roles[0]]} />}>       
-      <Route path="/administrador" element={<Administrador />} >
+      <Route path="/administrador/*" element={<Administrador />} >
+      <Route path="gestionar" element={<AdministrarUsuarios />} />
       <Route path="nuevo" element={<NuevoUsuario />} />
-
+      <Route path="ver/:id" element={<VerUsuario/>} />
+      <Route path="editar/:id" element={<EditarUsuario/>} />
       </Route>
       </Route>
       

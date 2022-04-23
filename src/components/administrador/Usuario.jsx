@@ -1,8 +1,12 @@
-import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Usuario = ({usuario}) => {
 
-    const { turno, name, apellido1, apellido2, user, sigla, ci, email,status, role, } = usuario
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.pathname.split('/').slice(0,-1).join('/');
+
+    const { turno, name, apellido1, apellido2, user, sigla, ci, email,status, role, uid } = usuario
 
   return (
     <tr className="border-b hover:bg-gray-50">
@@ -23,13 +27,13 @@ const Usuario = ({usuario}) => {
                 <button 
                     type="button"
                     className="bg-yellow-500 hover:bg-yellow-600 block w-full text-white p-2 uppercase font-bold text-xs"
-                    onClick={() => navigate(`/clientes/${id}`)}
+                    onClick={() => navigate(  from + `/ver/${uid}`)}
                 >Ver</button>
 
                 <button 
                     type="button"
                     className="bg-blue-600 hover:bg-blue-700 block w-full text-white p-2 uppercase font-bold text-xs mt-3"
-                    onClick={() => navigate(`/clientes/editar/${id}`)}
+                    onClick={() => navigate(  from + `/editar/${uid}`)}
                 >Editar</button>
 
                 <button 

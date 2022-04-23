@@ -4,7 +4,7 @@ const url = (role) =>{
 
     switch (role) {
         case 'ADMIN_ROLE':
-          return  'administrador'
+          return  'administrador/gestionar'
 
         case 'REDACTOR_ROLE':
           return  'redactor'
